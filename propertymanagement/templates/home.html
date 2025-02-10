@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="d-flex flex-column min-vh-100">
+    <header class="text-white bg-success p-5 text-center">
+        <h1>Land Registration System</h1>
+    </header>
+
+
+    <section class="main-section text-center py-5">
+        <div class="container mt-5">
+            <h2>Welcome to the Land Registration System</h2>
+            <p class="lead">
+                Register your land, generate certificates, and manage your documents easily.
+            </p>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Easy land Registration</h5>
+                    <p>Fast and simple process to register your property.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Generate Certificates</h5>
+                    <p>Instant certificate generation for land owners.</p>
+                </div>
+
+                <div class="col-md-4">
+                    <h5>Pay Stamp Duty easily</h5>
+                    <p>Stamp duty can be paid from home.</p>
+                </div>
+            </div>
+            <a href="{% url 'login' %}" class="btn btn-success mt-4">Apply Now</a>
+
+        </div>
+    </section>
+
+    <footer class="footer bg-dark text-white text-center py-3 mt-auto">
+        <div class="container">
+            <p>&copy; 2025 Property Registration System. All rights reserved.</p>
+            <p><a href="#" class="text-white">Terms and Conditions</a> | <a href="#" class="text-white">Privacy
+                    Policy</a></p>
+        </div>
+    </footer>
+</div>
+{% endblock %}

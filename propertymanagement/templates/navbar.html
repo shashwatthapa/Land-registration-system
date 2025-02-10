@@ -1,0 +1,11 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid d-flex justify-content-between">
+        <div class="d-flex">
+            <a class="nav-item nav-link text-white" href="{% url 'dashboard' %}">Land records</a>
+            <a class="nav-item nav-link text-white" href="{% url 'register_property' %}">Register land</a>
+            <a class="nav-item nav-link text-white" href="{% url 'logout' %}">Logout</a>
+        </div>
+
+        <p class="text-white mb-0 ms-auto">Hello {{request.user}}</p>
+    </div>
+</nav>

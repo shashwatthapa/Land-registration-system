@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<h1 class="bg-success p-4 text-white text-center">Admin Dashboard</h1>
+<a style="color:black;" href="{% url 'logout' %}">Logout</a>
+<div class="container text-center">
+    <table class="table table-sm w-60 mx-auto mt-3">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Name of account</th>
+                <th scope="col">Property number</th>
+                <th scope="col">Property Owner name</th>
+                <th scope="col">Phone number</th>
+                <th scope="col">Email</th>
+                <th scope="col">Document</th>
+                <th scope="col">National ID</th>
+                <th scope="col">Status</th>
+                <th scope="col">Accept</th>
+                <th scope="col">Reject</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for items in mem %}
+            <tr>
+                <th scope="row">{{items.posted_by.first_name}} {{items.posted_by.last_name}}</th>
+                <td>{{items.id}}</td>
+                <td>{{items.owner_name}}</td>
+                <td>{{items.posted_by.kyc.phone_number}}</td>
+                <td>{{items.posted_by.email}}</td>
+                <td>
+                    <a href="#" onclick="openDocument('{{ items.sale_deed.url }}'); return false;">View document</a>
+                </td>
+                <td> <a href="#" onclick="openDocument('{{ items.posted_by.kyc.national_id.url }}'); return false;">View
+                        National ID</a></td>
+
+                <td>{{items.status}}</td>
+                <td><a href="{% url 'accept' items.id %}"><button>Accept</button></a></td>
+                <td><a href="{% url 'reject' items.id %}"><button>Reject</button></a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <script>
+        function openDocument(url) {
+            window.open(url, '_blank', 'width=1000,height=800,scrollbars=yes,resizable=yes');
+        }
+    </script>
+</div>
+
+
+{% endblock %}

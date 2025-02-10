@@ -1,0 +1,91 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<div class="d-flex justify-content-center align-items-center" style="height: 80vh;">
+    <div class="col-md-4 p-4 mt-5"
+        style="box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4); border-radius: 8px; background-color: white;">
+        <h1 class="text-left mb-4">Register land</h1>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                {{ user_form.first_name }}
+                {% if user_form.first_name.errors %}
+                <div class="text-danger">
+                    {% for error in user_form.first_name.errors %}
+                    {{ error }}
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+
+            <div class="mb-3">
+                {{ user_form.last_name }}
+                {% if user_form.last_name.errors %}
+                <div class="text-danger">
+                    {% for error in user_form.last_name.errors %}
+                    {{ error }}
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+
+            <div class="mb-3">
+                {{ user_form.username }}
+                {% if user_form.username.errors %}
+                <div class="text-danger">
+                    {% for error in user_form.username.errors %}
+                    {{ error }}
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+
+            <div class="mb-3">
+                {{ user_form.email }}
+                {% if user_form.email.errors %}
+                <div class="text-danger">
+                    {% for error in user_form.email.errors %}
+                    {{ error }}
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+
+            <div class="mb-3">
+                {{ user_form.password1 }}
+                {% if user_form.password1.errors %}
+                <div class="text-danger">
+                    {% for error in user_form.password1.errors %}
+                    {{ error }}
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+
+            <div class="mb-3">
+                {{ user_form.password2 }}
+                {% if user_form.password2.errors %}
+                <div class="text-danger">
+                    {% for error in user_form.password2.errors %}
+                    {{ error }}
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+
+            <div class="mb-3">
+                {{ kyc_form.phone_number }}
+            </div>
+
+            <div class="mb-3">
+                <label>National ID:</label>
+                {{ kyc_form.national_id }}
+            </div>
+
+            <button type="submit" class="btn btn-success w-50 mx-auto d-block">Register</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

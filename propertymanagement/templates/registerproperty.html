@@ -1,0 +1,56 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="d-flex flex-column min-vh-100">
+    <header class="text-white bg-success p-5 text-center">
+        <h1>Register land</h1>
+    </header>
+    {% include 'navbar.html' %}
+    <div class="container mt-3">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow-lg p-4">
+                    <h2 class="text-center mb-4">Fill this form </h2>
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        <div class="mb-3">
+                            {{ form.owner_name }}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form.address }}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form.state }}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form.property_size }}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form.property_value }}
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Citizenship and Ownership documents in pdf</label>
+                            {{ form.sale_deed }}
+                            {% if form.sale_deed.errors %}
+                            <div class="invalid-feedback d-block">
+                                {% for error in form.sale_deed.errors %}
+                                <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                        </div>
+
+                        <button type="submit" class="btn btn-success w-100">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+    {% endblock %}

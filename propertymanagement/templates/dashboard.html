@@ -1,0 +1,56 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="d-flex flex-column min-vh-100">
+    <header class="text-white bg-success p-5 text-center">
+        <h1>Land Records</h1>
+    </header>
+    {% include 'navbar.html' %}
+
+    <div class="container mt-4">
+        <table class="table table-bordered text-center">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">Property number</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">State</th>
+                    <th scope="col">Property Size</th>
+                    <th scope="col">Property Value</th>
+                    <th scope="col">Stamp Duty</th>
+                    <th scope="col">Pay Stamp Duty</th>
+                    <th scope="col">Status</th>
+
+                    <th scope="col">Get certificate</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for property in mem %}
+                <tr>
+                    <td>{{property.id}}</td>
+                    <td>{{ property.address }}</td>
+                    <td>{{ property.state }}</td>
+                    <td>{{ property.property_size }}</td>
+                    <td>{{ property.property_value }}</td>
+                    <td>{{ property.stamp_duty }}</td>
+                    <td>
+                        {% if property.is_paid %}
+                        <p>Already paid</p>
+                        {% else %}
+                        <a href="{% url 'payment' property.id %}"><button type="submit"
+                                class="btn btn-success w-50">Pay</button></a>
+                        {% endif %}
+                    </td>
+                    <td>{{property.status}}</td>
+                    {% if property.status == 'Approved' %}
+                    <td><a href="{% url 'generate_certificate' property.id %}"><button>Get certificate</button></a></td>
+                    {% else %}
+                    <td>❌</td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,115 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate of Land Registration</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .certificate-container {
+            text-align: center;
+            padding: 30px;
+            border: 2px solid #000;
+            max-width: 600px;
+            margin: auto;
+        }
+
+        .certificate-header {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .certificate-body {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .certificate-footer {
+            font-size: 16px;
+            margin-top: 20px;
+            font-style: italic;
+        }
+
+        .certificate-signature {
+            margin-top: 30px;
+            text-align: left;
+            padding-left: 50px;
+            font-size: 18px;
+            border-top: 1px solid #000;
+            margin-bottom: 20px;
+        }
+
+        .certificate-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: green;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="certificate-container">
+        <div class="certificate-header">
+            <h2>Certificate of Land Registration</h2>
+        </div>
+
+        <div class="certificate-body">
+            <p><strong>Land num {{mem.id}} has been successfully registered in the name of:</strong></p>
+            <p><strong>Owner Name:</strong> {{ mem.owner_name }}</p>
+            <p><strong>Address:</strong> {{ mem.address }}</p>
+            <p><strong>State:</strong> {{ mem.state }}</p>
+            <p><strong>Property Size:</strong> {{ mem.property_size }} sq meters</p>
+            <p><strong>Property Value:</strong> {{ mem.property_value }} USD</p>
+            <p><strong>Stamp Duty Paid:</strong> {{ mem.stamp_duty }} USD</p>
+        </div>
+
+        <div class="certificate-footer">
+            <p>This certificate verifies that the above property has been officially registered and the stamp duty has
+                been paid as per government regulations.</p>
+        </div>
+
+        <div class="certificate-signature">
+            <p><strong>Authorized Signature:</strong></p>
+            <img src="{% static 'signature.jpg' %}" alt="signature" height="70" width="200">
+            <p>Designation: Land Registration Department Officer</p>
+        </div>
+
+        <div class="certificate-button">
+            <a style="color:white;" href="#" id="download-cert">Download Certificate</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('download-cert').addEventListener('click', function () {
+            var element = document.querySelector('.certificate-container');
+            var button = document.getElementById('download-cert');
+            var clonedElement = element.cloneNode(true);
+            clonedElement.querySelector('.certificate-button').style.display = 'none';
+
+            var opt = {
+                filename: 'property_certificate.pdf',
+                html2canvas: { scale: 2 }
+            };
+
+            html2pdf(clonedElement, opt);
+        });
+    </script>
+
+
+</body>
+
+</html>
