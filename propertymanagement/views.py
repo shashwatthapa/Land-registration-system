@@ -13,6 +13,10 @@ from django.contrib import messages
 def home(request):
     return render(request,'home.html')
 
+def my_view(request):
+    return render(request, 'dashboard.html', {'br_range': range(8)})
+
+
 def user_login(request):
     form = LoginForm()
     errors = None  

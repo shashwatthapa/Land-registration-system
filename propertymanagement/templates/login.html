@@ -1,4 +1,4 @@
-{% extends 'layout.html' %}
+{% extends 'home.html' %}
 
 {% block body %}
 
@@ -16,8 +16,8 @@
             <br>
             {{ form.password }}
             <br>
-            <button type="submit" class="btn btn-success w-50 mx-auto d-block">Login</button>
-            <a class="d-block text-center mx-auto mt-4 text-success" href="{% url 'register' %}">Create account</a>
+            <button type="submit" class="btn btn-info w-50 mx-auto d-block">Login</button>
+            <a class="d-block text-center mx-auto mt-4 text-info" href="{% url 'register' %}">Create account</a>
         </form>
     </div>
 </div>

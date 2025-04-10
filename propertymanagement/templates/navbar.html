@@ -1,11 +1,15 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid d-flex justify-content-between">
         <div class="d-flex">
-            <a class="nav-item nav-link text-white" href="{% url 'dashboard' %}">Land records</a>
-            <a class="nav-item nav-link text-white" href="{% url 'register_property' %}">Register land</a>
-            <a class="nav-item nav-link text-white" href="{% url 'logout' %}">Logout</a>
+            <a class="nav-item nav-link text-white" href="{% url 'dashboard' %}"><button type="submit"
+                class="btn btn-info w-130">जग्गा रेकर्ड</button></a>
+            <a class="nav-item nav-link text-white" href="{% url 'register_property' %}"><button type="submit"
+                class="btn btn-info w-130">जग्गा दर्ता</button></a>
+            <a class="nav-item nav-link text-white" href="{% url 'logout' %}"><button type="submit"
+                class="btn btn-danger w-70">Logout</button></a>
         </div>
 
-        <p class="text-white mb-0 ms-auto">Hello {{request.user}}</p>
+        <p class="text-white mb-0 ms-auto"><button type="submit"
+            class="btn btn-success w-330">नमस्कार {{request.user}}</button></p>
     </div>
 </nav>

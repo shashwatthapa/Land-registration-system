@@ -155,6 +155,11 @@ body {
 
 }
 
+
+
+
+ 
+
 /*header2 section ends here*/
 
 
@@ -186,10 +191,57 @@ nav ul li a:hover {
   background: goldenrod;
   text-decoration: none;
 }
-.btn 
+/* .btn 
 {
     background-color: crimson;
+} */
+
+ /* Target only the second-last <li> */
+nav ul li:nth-last-child(2) {
+    position: relative; /* Ensure proper positioning */
 }
+
+/* Dropdown for only the second-last menu item */
+nav ul li:nth-last-child(2) ul {
+    position: absolute;
+    top: 100%; /* Places the dropdown right below */
+    left: 0;
+    display: none;
+    background: #3866a3;
+    z-index: 2000;
+    min-width: 180px;
+    padding: 0;
+    border-radius: 5px;
+    
+}
+
+/* Style dropdown items only for this menu */
+nav ul li:nth-last-child(2) ul li {
+    display: block;
+    width: 100%;
+    background: #3866a3;
+    
+}
+
+/* Ensure text does not wrap */
+nav ul li:nth-last-child(2) ul li a {
+    display: block;
+    padding: 10px 15px;
+    color: #fff;
+    text-align: left;
+    white-space: nowrap;
+}
+
+/* Hover effect for dropdown */
+nav ul li:nth-last-child(2) ul li a:hover {
+    background: #daa520;
+}
+
+/* Show dropdown only for second-last item */
+nav ul li:nth-last-child(2):hover ul {
+    display: block;
+}
+
 
 /*slider section starts here*/
 
