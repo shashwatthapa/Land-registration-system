@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-
+{% load static %}
 {% block body %}
  
 
@@ -42,9 +42,9 @@
        <!-- Additional required wrapper -->
        <div class="swiper-wrapper">
          <!-- Slides -->
-         <div class="swiper-slide"><img src="static/img/Lalbandi1.png" alt="Lalbandi market drone shot"></div>
-         <div class="swiper-slide"><img src="static/img/Lalbandi2.png" alt="Lalbandi market drone shot 2"></div>
-         <div class="swiper-slide"><img src="static/img/Lalbandi3.png" alt="Lalbandi market drone shot 3"></div>
+         <div class="swiper-slide"><img src="{% static 'img/Lalbandi1.png'%}" alt="Lalbandi market drone shot"></div>
+         <div class="swiper-slide"><img src="{% static 'img/Lalbandi2.png'%}" alt="Lalbandi market drone shot 2"></div>
+         <div class="swiper-slide"><img src="{% static 'img/Lalbandi3.png' %}" alt="Lalbandi market drone shot 3"></div>
          ...
        </div>
        <!-- If we need pagination -->
